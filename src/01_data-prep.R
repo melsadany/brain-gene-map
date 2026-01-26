@@ -40,7 +40,8 @@ donors.gex <- do.call(rbind, donors.gex) %>% as.data.frame() %>% rownames_to_col
 donors.annot <- do.call(rbind, donors.annot) %>% as.data.frame() %>% mutate(well_id =as.character(well_id))
 write_rds(list(annot = donors.annot, gex = donors.gex, meta = donors.meta), 
           "data/raw/gex-and-annotation.rds", compress = "gz")
-
+ll <- read_rds("data/raw/gex-and-annotation.rds")
+donors.annot = ll$annot; donors.gex = ll$gex; donors.meta = ll$meta
 ################################################################################
 ################################################################################
 ## keep gray matter only
@@ -60,6 +61,8 @@ donors.annot.gm <- donors.annot %>%
 ##### QC #####
 ##############
 
+
+##############
 ### sample-based
 qc_metrics <- function(donor){
   donor %>% left_join(donors.annot %>% select(starts_with("mni"),well_id)) %>% 
@@ -86,7 +89,13 @@ donors.gex.clean <- do.call(rbind, lapply(donors.gex.qc, function(df0){
 ### gene-based (stable expression across participants)
 
 # Calculate inter-donor correlation for each gene
-gene_cols <- setdiff(colnames(donors.gex.clean), c("donor_id", "mni_x", "mni_y", "mni_z"))
+gene_cols.0 <- setdiff(colnames(donors.gex.clean), c("donor_id", "mni_x", "mni_y", "mni_z"))
+
+### drop non protein-coding genes
+biomart.genes <- read_rds("/wdata/msmuhammad/data/genomics/bioMart-protein-coding-genes.rds")
+table(gene_cols.0 %in% biomart.genes$external_gene_name)
+gene_cols <- gene_cols.0[(gene_cols.0 %in% biomart.genes$external_gene_name)]
+
 # Compute mean expression per region per donor for each gene
 donors.gex.region.means <- donors.gex.clean %>% 
   left_join(donors.annot %>% select(well_id, donor_id=nii_donor, structure_id)) %>%
@@ -117,7 +126,7 @@ stable.genes <- names(inter.donor.cor)[!is.na(inter.donor.cor) & inter.donor.cor
 cat(sprintf("Genes passing inter-donor consistency (r > 0.4): %d / %d (%.1f%%)\n",
             length(stable.genes), length(gene_cols),
             100 * length(stable.genes) / length(gene_cols)))
-# 17252 / 29132 (59.2%)
+# 10401 / 15256 (68.2%)
 # Filter dataset
 donors.gex.stable <- donors.gex.clean %>%
   select(mni_x, mni_y, mni_z, donor_id, well_id, all_of(stable.genes))

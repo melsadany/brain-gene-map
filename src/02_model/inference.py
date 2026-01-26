@@ -176,7 +176,7 @@ def save_predictions(predictions, coords, shape, gene_names, resolution_mm, outp
 
 def main():
     config = Config()
-    atlas_path = "/Dedicated/jmichaelson-wdata/msmuhammad/refs/labeled-MNI/2mm/FS-anat/FS-labeled_resampled-2mm.nii.gz"
+    atlas_path = "/Dedicated/jmichaelson-wdata/msmuhammad/refs/labeled-MNI/2mm/FS-anat/resampled-FS-anat-2mm.nii.gz"
     
     # Load trained model
     print("Loading trained model...")

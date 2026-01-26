@@ -44,9 +44,7 @@ for (gene in selected_genes) {
     brain_data[[gene]] <- predictions[, gene_idx]
   }
 }
-head(brain_data)
-
-brain_data %>% write_rds("data/derivatives/predicted-5k-gex-2.0mm.rds",compress = "gz")
+brain_data[1:10,1:10]
 pdssave(brain_data, file="data/derivatives/predicted-5k-gex-2.0mm.rds")
 
 ################################################################################

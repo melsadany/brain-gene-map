@@ -1,7 +1,7 @@
 Checkpoint was trained on 5000 genes
-Loaded dataset: 2975 samples, 17252 genes
+Loaded dataset: 2975 samples, 10401 genes
   Structures: {np.int64(0): np.int64(2225), np.int64(1): np.int64(283), np.int64(2): np.int64(467)}
-Loaded dataset: 477 samples, 17252 genes
+Loaded dataset: 477 samples, 10401 genes
   Structures: {np.int64(0): np.int64(340), np.int64(1): np.int64(80), np.int64(2): np.int64(57)}
   Filtered to top 5000 genes by variance
 Model initialized:
@@ -10,57 +10,57 @@ Model initialized:
   Total parameters: 10,510,872
 
 Correlation distribution:
-  Mean: 0.3211
-  Median: 0.3203
-  25th percentile: 0.2045
-  75th percentile: 0.4394
-  Genes with r>0.5: 777 (15.5%)
-  Genes with r>0.3: 2719 (54.4%)
-  Genes with r<0.1: 488 (9.8%)
+  Mean: 0.3264
+  Median: 0.3302
+  25th percentile: 0.2210
+  75th percentile: 0.4332
+  Genes with r>0.5: 703 (14.1%)
+  Genes with r>0.3: 2874 (57.5%)
+  Genes with r<0.1: 403 (8.1%)
 
 Saved: gene_analysis_spatial_top5k.png
 
 Top 20 genes:
-  TMEM155: r=0.763, var=0.813
-  A_32_P197156: r=0.752, var=0.990
-  R3HDM1: r=0.746, var=0.843
-  A_24_P870921: r=0.742, var=1.005
-  CHRD: r=0.741, var=0.777
-  HSPB3: r=0.740, var=0.849
-  CABP1: r=0.739, var=1.016
-  A_24_P557355: r=0.737, var=0.875
-  KCNS1: r=0.736, var=0.799
-  FBXW7: r=0.735, var=0.972
-  A_32_P85405: r=0.734, var=0.754
-  SATB2: r=0.733, var=0.932
-  LRRC38: r=0.732, var=0.800
-  THEMIS: r=0.731, var=0.938
-  RSPO4: r=0.731, var=0.892
-  PBX3: r=0.729, var=1.018
-  CASQ1: r=0.729, var=0.896
-  A_24_P384909: r=0.726, var=0.858
-  AC099797.1: r=0.723, var=0.767
-  LRRC8B: r=0.722, var=0.757
+  SAMD11: r=0.742, var=1.034
+  SLC30A3: r=0.730, var=0.842
+  SLC17A7: r=0.729, var=0.981
+  CABP1: r=0.727, var=1.017
+  CASQ1: r=0.722, var=0.897
+  KLF10: r=0.720, var=0.865
+  KCNS1: r=0.716, var=0.800
+  HSPB3: r=0.715, var=0.850
+  BEND5: r=0.710, var=0.852
+  MEF2C: r=0.705, var=0.883
+  HTR2A: r=0.703, var=0.779
+  TNNT2: r=0.702, var=0.850
+  DENND3: r=0.702, var=0.712
+  CHRD: r=0.702, var=0.778
+  NUAK1: r=0.701, var=0.959
+  FBXW7: r=0.698, var=0.973
+  EFHD2: r=0.696, var=0.862
+  POU6F2: r=0.696, var=0.897
+  R3HDM1: r=0.696, var=0.844
+  MPPED1: r=0.695, var=0.824
 
 Bottom 20 genes:
-  UNQ9391: r=-0.263, var=0.606
-  ATP13A2: r=-0.261, var=0.857
-  BAGE: r=-0.258, var=0.887
-  A_24_P337810: r=-0.245, var=0.964
-  MFSD10: r=-0.242, var=0.869
-  AC130686.2: r=-0.216, var=0.884
-  A_24_P145911: r=-0.212, var=0.636
-  DCUN1D1: r=-0.212, var=0.875
-  LEO1: r=-0.211, var=0.800
-  HIST3H3: r=-0.210, var=0.824
-  TBC1D14: r=-0.208, var=0.833
-  CD276: r=-0.208, var=0.666
-  ACTR2: r=-0.201, var=0.866
-  LOC100130890: r=-0.193, var=0.711
-  PAX8: r=-0.179, var=0.839
-  AC135983.8: r=-0.179, var=0.836
-  MRPL41: r=-0.156, var=0.708
-  CUST_2664_PI416261804: r=-0.155, var=0.709
-  OLFM2: r=-0.150, var=0.753
-  ZNF468: r=-0.142, var=0.761
+  MFSD10: r=-0.234, var=0.869
+  RPAP2: r=-0.224, var=0.814
+  ADRM1: r=-0.224, var=0.812
+  CLIP3: r=-0.177, var=0.744
+  GSS: r=-0.159, var=0.753
+  ZNF525: r=-0.153, var=0.704
+  EXTL3: r=-0.150, var=0.942
+  ZNF600: r=-0.149, var=0.752
+  BTN2A1: r=-0.147, var=0.916
+  SPOP: r=-0.136, var=0.639
+  DCUN1D1: r=-0.136, var=0.875
+  MRPL41: r=-0.131, var=0.708
+  MTHFD2L: r=-0.128, var=1.008
+  FBXO42: r=-0.127, var=0.817
+  LEO1: r=-0.120, var=0.801
+  ATP13A2: r=-0.118, var=0.858
+  CRYGA: r=-0.109, var=0.905
+  RNF20: r=-0.104, var=0.836
+  LAMC1: r=-0.101, var=0.647
+  OLFM2: r=-0.101, var=0.754
 

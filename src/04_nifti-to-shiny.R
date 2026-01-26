@@ -542,7 +542,7 @@ server <- function(input, output, session) {
       choices <- setNames(nifti_files, display_names)
       updateSelectInput(session, "nifti_select", 
                         choices = choices,
-                        selected = nifti_files[1])
+                        selected = nifti_files[3828])
     } else {
       updateSelectInput(session, "nifti_select", 
                         choices = c("No NIfTI files found" = ""))
@@ -550,7 +550,7 @@ server <- function(input, output, session) {
   })
   
   output$file_status_msg <- renderText({
-    paste("✓ Found", length(nifti_files), "deen expression  map(s)")
+    paste("✓ Found", length(nifti_files), "gene expression  map(s)")
   })
   
   # Load atlas data
