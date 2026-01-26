@@ -1,0 +1,6 @@
+data/*
+archive/*
+src/02_model/checkpoints
+src/02_model/predictions
+src/02_model/__pycache__
+src/02_model/runs
