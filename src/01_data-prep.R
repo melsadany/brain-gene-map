@@ -41,6 +41,12 @@ donors.annot <- do.call(rbind, donors.annot) %>% as.data.frame() %>% mutate(well
 write_rds(list(annot = donors.annot, gex = donors.gex, meta = donors.meta), 
           "data/raw/gex-and-annotation.rds", compress = "gz")
 ll <- read_rds("data/raw/gex-and-annotation.rds")
+ll$annot %>% mutate(hemisphere = case_when(grepl("right",structure_name)~"right",
+                                           grepl("left",structure_name)~"left",
+                                           T~"")) %>%
+  group_by(nii_donor, hemisphere) %>% summarise(c=n()) %>% 
+  group_by(nii_donor) %>% mutate(tot = sum(c), percentage = (c/tot)*100) %>%
+  left_join(ll$meta)
 donors.annot = ll$annot; donors.gex = ll$gex; donors.meta = ll$meta
 ################################################################################
 ################################################################################
@@ -92,7 +98,7 @@ donors.gex.clean <- do.call(rbind, lapply(donors.gex.qc, function(df0){
 gene_cols.0 <- setdiff(colnames(donors.gex.clean), c("donor_id", "mni_x", "mni_y", "mni_z"))
 
 ### drop non protein-coding genes
-biomart.genes <- read_rds("/wdata/msmuhammad/data/genomics/bioMart-protein-coding-genes.rds")
+biomart.genes <- read_rds(correct_path("/wdata/msmuhammad/data/genomics/bioMart-protein-coding-genes.rds"))
 table(gene_cols.0 %in% biomart.genes$external_gene_name)
 gene_cols <- gene_cols.0[(gene_cols.0 %in% biomart.genes$external_gene_name)]
 
